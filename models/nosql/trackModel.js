@@ -19,8 +19,8 @@ const TrackScheme = new mongoose.Schema(
             nationality:{type:String}
         },
         duration:{
-            start: {type:number},
-            end: {type:number}
+            start: {type:Number},
+            end: {type:Number}
         },
         mediaId:{
             type: mongoose.Types.ObjectId,
