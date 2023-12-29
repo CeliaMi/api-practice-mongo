@@ -1,6 +1,7 @@
 import express  from "express";
 import cors from 'cors'
 import 'dotenv/config'
+import { dbConnect } from "./config/mongo.js";
 
 
 
@@ -15,3 +16,4 @@ app.listen(PORT, ()=> {
     console.log(`tu app esta lista por http://localhost:${PORT}`)
 })
 
+dbConnect();
