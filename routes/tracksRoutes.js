@@ -1,10 +1,11 @@
 import express  from "express";
-import { getItems } from "../controllers/trackController.js";
+import { createItem, getItems, getItem } from "../controllers/trackController.js";
 
 export const tracksRouter = express.Router();
 
 
 tracksRouter.get('/', getItems)
-tracksRouter.post('/')
+tracksRouter.get('/:id', getItem)
+tracksRouter.post('/', createItem)
 tracksRouter.put('/')
 tracksRouter.get('/')

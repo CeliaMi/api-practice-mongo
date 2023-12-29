@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const TrackScheme = new mongoose.Schema(
     {
         name: { type: String},
-        album: {type: Number},
+        album: {type: String},
         cover: {
             type:String,
             validate:{ 
