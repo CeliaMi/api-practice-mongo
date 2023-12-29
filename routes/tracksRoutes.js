@@ -1,7 +1,7 @@
 import express  from "express";
-import { createItem, getItems, getItem } from "../controllers/trackController.js";
+import { createItem, getItems, getItem, updateItem, deleteItem } from "../controllers/trackController.js";
 import { validatorCreateItem, validatorGetItem } from "../validators/tracksValdator.js";
-import { customHeader } from "../middleware/customHeader.js"; 
+// import { customHeader } from "../middleware/customHeader.js"; 
 
 export const tracksRouter = express.Router();
 
@@ -9,5 +9,5 @@ export const tracksRouter = express.Router();
 tracksRouter.get('/', getItems)
 tracksRouter.get('/:id', validatorGetItem, getItem)
 tracksRouter.post('/', validatorCreateItem, createItem)
-tracksRouter.put('/')
-tracksRouter.get('/')
+tracksRouter.put('/:id',validatorGetItem, validatorCreateItem, updateItem)
+tracksRouter.delete('/:id',validatorGetItem, deleteItem)
