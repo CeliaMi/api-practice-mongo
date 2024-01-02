@@ -1,13 +1,11 @@
 import express  from "express";
 import { validatorLogin ,validatorRegister }  from '../validators/authValidator.js'
-import { loginController } from "../controllers/loginController.js";
+import {  registerController, loginController } from "../controllers/authController.js";
 
 
 export const authRoutes = express.Router();
 
-authRoutes.post('/register', validatorRegister, loginController )
+authRoutes.post('/register', validatorRegister, registerController )
 
 
-authRoutes.post('/login', validatorLogin, (req, res)=>{
-
-} )
+authRoutes.post('/login', validatorLogin, loginController )
