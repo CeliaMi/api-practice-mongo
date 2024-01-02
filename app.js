@@ -4,6 +4,7 @@ import 'dotenv/config'
 import { dbConnect } from "./config/mongo.js";
 import { tracksRouter } from "./routes/tracksRoutes.js";
 import { storageRoutes } from "./routes/storageRoutes.js";
+import { authRoutes } from "./routes/authRoutes.js";
 
 const app = express();
 app.use(cors())
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 8000
 
 app.use("/api/tracks", tracksRouter )
 app.use("/api/storage", storageRoutes )
+app.use("/api/auth", authRoutes)
  
 app.listen(PORT, ()=> {
     console.log(`tu app esta lista por http://localhost:${PORT}`)
