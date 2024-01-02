@@ -1,6 +1,6 @@
 import express  from "express";
 import { createItem, getItems, getItem, updateItem, deleteItem } from "../controllers/trackController.js";
-import { validatorCreateItem, validatorGetItem } from "../validators/tracksValdator.js";
+import { validatorCreateItem, validatorGetItem } from "../validators/tracksValidator.js";
 // import { customHeader } from "../middleware/customHeader.js"; 
 
 export const tracksRouter = express.Router();
