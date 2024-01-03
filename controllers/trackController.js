@@ -4,8 +4,9 @@ import { handleHttpError } from '../utils/handleError.js'
 
 export const getItems = async(req,res) =>{
     try{
+        const user = req.user;
         const data = await TrackScheme.find({})
-        res.send({data})
+        res.send({data, user})
     }catch(error){
         handleHttpError(res,'ERROR_GET_ITEMS')
     }

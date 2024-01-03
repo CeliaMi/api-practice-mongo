@@ -1,5 +1,6 @@
 import { handleHttpError } from '../utils/handleError.js'
 import { verifyToken } from '../utils/handleJwt.js'
+import  UserScheme  from '../models/nosql/userModel.js'
 
 export const authMiddleware = async(req, res, next) => {
     try{
@@ -17,8 +18,14 @@ export const authMiddleware = async(req, res, next) => {
         // nuestra firma de token *tokenSign()* necesita un id para funcionar verificamos que esta y si no error.
         if(!dataToken._id){
             handleHttpError(res, "ERROR_ID_TOKEN", 401);
-        
         }
+
+        //a través del id que trae el token sacamos la información del usuario y la ponemos a disposición de las request que este usuario pueda hacer
+
+        //además de para saber el rol, hacer esto nos permite tener un control de trazabilidad, es decir, saber que usuario ha hecho cada petición.
+
+        const user =  await  UserScheme.findById(dataToken._id)
+        req.user = user
         //si todo da ok que avance al paso siguiente
         next()
 
