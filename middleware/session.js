@@ -5,11 +5,11 @@ export const authMiddleware = async(req, res, next) => {
     try{
         //primero, si no hay token que nos avise y nos mande un error
         if(!req.headers.authorization){
-            handleHttpError(res, "NOT_TOKEN", 401);
+            handleHttpError(res, "NEED_SESSION", 401);
             return
         } 
         //busca en las cabeceras el token y selecciona solo el string del token
-        const token = req.headers.authorization.split('').pop();
+        const token = req.headers.authorization.split(' ').pop();
 
         //con el handle que hemos creado *verifyToken()* ( que utiliza de la librería jwt) verificamos que es un token
         const dataToken = await verifyToken(token);
